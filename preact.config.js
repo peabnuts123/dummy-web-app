@@ -1,7 +1,11 @@
-const webpack = require('webpack');
-const path = require('path');
+// const webpack = require('webpack');
+// const path = require('path');
+import webpack from 'webpack';
+import path from 'path';
+import asyncPlugin from 'preact-cli-plugin-async';
 
-module.exports = function (config, env) {
+
+export default function (config, env) {
   // Alias paths
   config.resolve = config.resolve || {};
   config.resolve.alias = config.resolve.alias || {};
@@ -13,4 +17,7 @@ module.exports = function (config, env) {
       API_URL: JSON.stringify(process.env.API_URL || `http://localhost:3000`),
     })
   );
-};
+
+  // Transform uh async or something?
+  asyncPlugin(config);
+}
