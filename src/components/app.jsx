@@ -6,9 +6,10 @@ import Header from './header';
 // Code-splitting is automated for routes
 import Home from '../routes/home';
 import Profile from '../routes/profile';
+import Numbers from '../routes/numbers';
 
 export default class App extends Component {
-	
+
 	/** Gets fired when the route changes.
 	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
 	 *	@param {string} event.url	The newly routed URL
@@ -21,11 +22,14 @@ export default class App extends Component {
 		return (
 			<div id="app">
 				<Header />
-				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-					<Profile path="/profile/" user="me" />
-					<Profile path="/profile/:user" />
-				</Router>
+				<div class="Container">
+          <Router onChange={this.handleRoute}>
+            <Home path="/" />
+            <Profile path="/profile/" user="me" />
+            <Profile path="/profile/:user" />
+            <Numbers path="/numbers" />
+          </Router>
+        </div>
 			</div>
 		);
 	}
